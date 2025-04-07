@@ -15,16 +15,10 @@ app.post('/generate', upload.single('photo'), async (req, res) => {
   const { quote, name, info } = req.body;
   const photoPath = path.join(__dirname, req.file.path);
 
-  // 🧠 Bild als Base64 einbetten (funktioniert mit JPG & PNG)
-  const mimeType = req.file.mimetype; // z. B. image/jpeg oder image/png
+  const mimeType = req.file.mimetype;
   const base64Image = fs.readFileSync(photoPath, 'base64');
   const photoDataURL = `data:${mimeType};base64,${base64Image}`;
-	onsole.log("📸 Bilddaten geladen:");
-console.log("🧾 MIME-Typ:", mimeType);
-console.log("📂 Foto-Pfad:", photoPath);
-console.log("🔠 Base64-Vorschau:", base64Image.slice(0, 100)); // Nur Anfang zeigen
 
-  // 💡 HTML-Template laden und Variablen ersetzen
   const htmlTemplate = fs.readFileSync('template.html', 'utf8')
     .replace('„Zitat kommt hier rein.“', `„${quote}“`)
     .replace('Name<br/>Partei / Funktion', `${name}<br/>${info}`)
@@ -44,6 +38,8 @@ console.log("🔠 Base64-Vorschau:", base64Image.slice(0, 100)); // Nur Anfang z
   res.sendFile(path.resolve(__dirname, filename));
 });
 
-app.listen(3000, () => {
-  console.log('✅ Server läuft auf http://localhost:3000');
+// ✅ Dynamischer Port für Render
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server läuft auf Port ${PORT}`);
 });
