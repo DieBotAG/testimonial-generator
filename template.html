@@ -1,0 +1,54 @@
+<!-- template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      width: 1080px;
+      height: 1350px;
+      font-family: sans-serif;
+      background: #ffffff;
+      margin: 0;
+      padding: 60px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .quote {
+      font-size: 42px;
+      font-style: italic;
+      margin-bottom: 60px;
+    }
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .person img {
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      object-fit: cover;
+    }
+    .info {
+      font-size: 32px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 40px;
+      left: 60px;
+      font-size: 50px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote" id="quote">„Zitat kommt hier rein.“</div>
+  <div class="person">
+    <img src="" id="photo" />
+    <div class="info" id="info">Name<br/>Partei / Funktion</div>
+  </div>
+  <div class="footer">NEIN zum Nachtrag</div>
+</body>
+</html>
